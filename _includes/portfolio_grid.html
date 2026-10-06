@@ -23,7 +23,6 @@
         {% assign title = item.title %}
         {% assign teacher = item.teacher %}
         {% assign full_img = img_dir | append: item.image | uri_escape | append: img_ver %}
-        {% if item.thumbnail %}{% assign thumb_img = img_dir | append: item.thumbnail | uri_escape | append: img_ver %}{% else %}{% assign thumb_img = full_img %}{% endif %}
         <div class="col-lg-6 col-12 portfolio-item">
             <a class="portfolio-link" data-toggle="modal" href="#modal-{{ n }}">
               <div class="portfolio-hover">
@@ -31,7 +30,7 @@
                   <i class="fas fa-search-plus fa-3x"></i>
                 </div>
               </div>
-              <img class="img-fluid" src="{{ thumb_img }}" alt="{{ title }}">
+              <img class="img-fluid" src="{{ full_img }}" alt="{{ title }}">
               <span class="more-indicator" title="크게 보기"><i class="fas fa-search-plus"></i></span>
             </a>
             <div class="portfolio-caption">

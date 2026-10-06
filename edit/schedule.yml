@@ -6,8 +6,8 @@
 #  ▶ 이름을 바꾸려면: 아래 글자만 고치세요.
 #  ▶ 이미지를 바꾸려면: edit/schedule 폴더에 사진을 올리고,
 #                      image 뒤에 그 사진 파일 이름을 적으세요.
-#  ▶ 시간표를 추가하려면: "- title:" 부터 4줄을 복사해서 아래에 붙여넣으세요.
-#  ▶ 시간표를 빼려면: 해당 4줄을 지우세요.
+#  ▶ 시간표를 추가하려면: "- title:" 부터 3줄을 복사해서 아래에 붙여넣으세요.
+#  ▶ 시간표를 빼려면: 해당 3줄을 지우세요.
 #
 #  ※ 주의
 #   - 맨 위와 맨 아래의 --- 줄은 절대 지우지 마세요.
@@ -16,24 +16,20 @@
 #
 #  title     : 시간표 제목
 #  teacher   : 제목 아래 이름
-#  image     : 크게 보이는 사진 (돋보기 누르면 나오는 사진)
-#  thumbnail : 목록에 작게 보이는 사진 (이 줄은 지워도 됩니다. 지우면 image 사진을 씁니다)
+#  image     : 시간표 사진 파일 이름 (목록과 팝업에 같은 사진이 나옵니다)
 # ================================================
 schedule:
 
-  - title: 수학 시간표
-    teacher: 김우진 원장
-    image: 3-detail.jpg
-    thumbnail: 3.jpeg
+  - title: 국어 시간표
+    teacher: 하경일 원장
+    image: 1.jpg
 
   - title: 영어 시간표
     teacher: 황원근 원장
-    image: 2-detail.jpg
-    thumbnail: 2.jpeg
+    image: 2.jpg
 
-  - title: 국어 시간표
-    teacher: 하경일 원장
-    image: 1-detail.jpg
-    thumbnail: 1.jpeg
+  - title: 수학 시간표
+    teacher: 김우진 원장
+    image: 3.jpg
 
 ---
