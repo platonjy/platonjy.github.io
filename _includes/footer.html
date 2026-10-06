@@ -1,15 +1,20 @@
 <!-- Footer -->
+{% comment %} 저작권 기간: 홈페이지를 처음 만든 해(2025) ~ 올해 {% endcomment %}
+{% assign copyright_start = 2025 %}
+{% assign copyright_now = 'now' | date: "%Y" | plus: 0 %}
+{% if copyright_now > copyright_start %}{% capture copyright_years %}{{ copyright_start }}–{{ copyright_now }}{% endcapture %}{% else %}{% assign copyright_years = copyright_start %}{% endif %}
 <footer class="footer" id="footer" style="background-color: #212529;">
   <div class="container">
     {% if site.locale and site.locale != "" and site.locale != nil %}
-    <div class="row align-items-center">
-      <div class="col-md-4">
+    <div class="row align-items-center justify-content-center">
+      <div class="col-12 text-center">
         <span class="copyright text-light"
-          >Copyright &copy; {{ site.title }} {{ 'now' | date: "%Y" }}</span
+          >Copyright &copy; {{ copyright_years }} {{ site.title }}.<span class="copyright-rights"> All rights reserved.</span></span
         >
       </div>
-      <!-- Social Media -->
-      <div class="col-md-4">
+      <!-- Social Media (sitetext.yml 의 footer.social 이 있을 때만 표시) -->
+      {% if site.data.sitetext[site.locale].footer.social %}
+      <div class="col-12 text-center">
         <ul class="list-inline social-buttons">
           {% for link in site.data.sitetext[site.locale].footer.social %}
           <li class="list-inline-item">
@@ -22,16 +27,18 @@
           {% endfor %}
         </ul>
       </div>
+      {% endif %}
     </div>
     {% else %}
-    <div class="row align-items-center">
-      <div class="col-md-4">
+    <div class="row align-items-center justify-content-center">
+      <div class="col-12 text-center">
         <span class="copyright text-light"
-          >Copyright &copy; {{ site.title }} {{ 'now' | date: "%Y" }}</span
+          >Copyright &copy; {{ copyright_years }} {{ site.title }}.<span class="copyright-rights"> All rights reserved.</span></span
         >
       </div>
-      <!-- Social Media -->
-      <div class="col-md-4">
+      <!-- Social Media (sitetext.yml 의 footer.social 이 있을 때만 표시) -->
+      {% if site.data.sitetext.footer.social %}
+      <div class="col-12 text-center">
         <ul class="list-inline social-buttons">
           {% for link in site.data.sitetext.footer.social %}
           <li class="list-inline-item">
@@ -44,6 +51,7 @@
           {% endfor %}
         </ul>
       </div>
+      {% endif %}
     </div>
     {% endif %}
   </div>

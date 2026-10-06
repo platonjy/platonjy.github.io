@@ -232,3 +232,27 @@ header.masthead img {
   color: #888;
   margin-bottom: 1rem;
 }
+
+/* 하단 저작권: 휴대폰에서는 "All rights reserved." 를 다음 줄로 */
+.footer span.copyright {
+  line-height: 1.8;
+}
+@media (max-width: 575px) {
+  .copyright-rights {
+    display: block;
+  }
+}
+
+/* 위치 섹션 전화번호: 누르면 전화 연결 */
+.tel-link {
+  color: inherit;
+  text-decoration: underline;
+  text-underline-offset: 3px;
+}
+.tel-link:hover {
+  color: #3399ff;
+}
+.tel-link i {
+  font-size: 0.85em;
+  margin-right: 5px;
+}
