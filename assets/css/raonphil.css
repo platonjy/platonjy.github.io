@@ -115,8 +115,9 @@ strong, b, h1, h2, h3, h4, h5, h6 {
 
 .raon-thumb {
   width: calc(100% / 2 - 8px); /* 기본: 모바일 4개 */
-  aspect-ratio: 1 / 1;
+  aspect-ratio: 3 / 4;        /* 세로로 긴 포스터에 맞춤 */
   object-fit: cover;
+  object-position: top center; /* 포스터 위쪽(제목)부터 보이게 */
   border-radius: 8px;
  /* box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);*/
   transition: transform 0.3s ease;
