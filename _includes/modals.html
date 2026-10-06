@@ -1,8 +1,12 @@
-{% assign sorted_projects = site.portfolio | sort: "order" | reverse %}
+{% comment %} 시간표 팝업 — 내용은 edit/schedule.yml 에서 수정하세요 {% endcomment %}
+{% assign schedule_page = site.pages | where: "path", "edit/schedule.yml" | first %}
+{% assign schedules = schedule_page.schedule %}
+{% assign img_dir = "edit/schedule/" %}
+{% capture img_ver %}?v={{ site.time | date: '%s' }}{% endcapture %}
 <!-- Portfolio Modals -->
-{% for project in sorted_projects %}
-  {% unless project.youtube %}
-    <div class="portfolio-modal modal fade" id="modal-{{ project.order }}" tabindex="-1" role="dialog" aria-hidden="true">
+{% for item in schedules %}
+    {% assign full_img = img_dir | append: item.image | uri_escape | append: img_ver %}
+    <div class="portfolio-modal modal fade" id="modal-{{ forloop.index }}" tabindex="-1" role="dialog" aria-hidden="true">
       <div class="modal-dialog">
         <div class="modal-content">
           <div class="close-modal" data-dismiss="modal">
@@ -12,13 +16,12 @@
             <div class="row">
               <div class="col-lg-8 mx-auto">
                 <div class="modal-body">
-                  <h3 class="text-uppercase">{{ project.title }}</h3>
-                  <p class="item-intro text-muted">{{ project.subtitle }}</p>
-                  <img class="img-fluid d-block mx-auto" src="{{ project.image }}" alt="{{ project.alt }}" />
-                  {% if project.image2 %}
-                    <img class="img-fluid d-block mx-auto" src="{{ project.image2 }}" alt="{{ project.alt2 | default: 'Image' }}" />
-                  {% endif %}
-                  <p>{{ project.content }}</p>
+                  <h3 class="text-uppercase">{{ item.title }}</h3>
+                  <p class="item-intro text-muted">{{ item.teacher }}</p>
+                  <div class="schedule-zoom-box" onclick="toggleScheduleZoom(this, event)">
+                    <img src="{{ full_img }}" alt="{{ item.title }}" />
+                  </div>
+                  <p class="schedule-zoom-hint"><i class="fas fa-search-plus"></i> 사진을 누르면 확대 / 다시 누르면 원래대로</p>
                   <button class="btn btn-primary" data-dismiss="modal" type="button">
                     <i class="fas fa-times"></i>
                     {{ site.data.sitetext[site.locale].portfolio.closebutton | default: "Close Project" }}
@@ -30,6 +33,5 @@
         </div>
       </div>
     </div>
-  {% endunless %}
 {% endfor %}
 <!-- End Portfolio Modals -->

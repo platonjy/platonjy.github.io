@@ -74,29 +74,23 @@ strong, b, h1, h2, h3, h4, h5, h6 {
   position: relative;
 }
 
+/* 시간표 사진 오른쪽 아래의 작은 돋보기 (눌러도 사진과 같은 팝업이 열림) */
 .more-indicator {
   position: absolute;
-  top: 8px;
   right: 8px;
-  background-color: #3399ff;
-  color: #000;
-  font-size: 12px;
-  padding: 2px 6px;
-  border-radius: 4px;
-  font-weight: bold;
+  bottom: 8px;
+  width: 30px;
+  height: 30px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
+  background-color: rgba(255, 255, 255, 0.85);
+  border: 1px solid #ddd;
+  color: #777;
+  font-size: 14px;
   z-index: 10;
-  opacity: 0.9;
-}
-
-@media (min-width: 768px) {
-  .more-indicator {
-    font-size: 14px;
-    padding: 4px 8px;
-  }
-}
-.more-indicator:hover {
-  background-color: #000;
-  color: #3399ff;
+  pointer-events: none;
 }
 
 .about-text {
@@ -160,8 +154,8 @@ strong, b, h1, h2, h3, h4, h5, h6 {
 }
 
 .raon-modal-content {
-  max-width: 90%;
-  max-height: 90%;
+  max-width: 96vw;
+  max-height: 92vh;
   border-radius: 8px;
 }
 
@@ -205,4 +199,35 @@ header.masthead img {
 	  margin-top: 20px;
 	  margin-bottom: 20px;
 	}	
+}
+/* 시간표 목록 이미지: 테마의 최대 폭(400px) 제한 해제 → 칸 너비만큼 크게 */
+#portfolio .portfolio-item .portfolio-link {
+  max-width: none;
+}
+
+/* 시간표 팝업: 사진을 누르면 확대 / 다시 누르면 원래대로 */
+.schedule-zoom-box {
+  overflow: auto;
+  -webkit-overflow-scrolling: touch;
+  margin-bottom: 0.5rem;
+}
+.schedule-zoom-box img {
+  display: block;
+  width: 100%;
+  margin: 0 auto;
+  cursor: zoom-in;
+}
+.schedule-zoom-box.zoomed {
+  max-height: 75vh;
+  border: 1px solid #ddd;
+}
+.schedule-zoom-box.zoomed img {
+  width: 250%;
+  max-width: none;
+  cursor: zoom-out;
+}
+.schedule-zoom-hint {
+  font-size: 0.9rem;
+  color: #888;
+  margin-bottom: 1rem;
 }

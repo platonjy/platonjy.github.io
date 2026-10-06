@@ -13,42 +13,23 @@
     </div>
 
 	<!-- 🔽 HTML 구조 -->
+	<!-- edit/notice 폴더에 있는 이미지(jpg, jpeg, png, gif, webp)를 파일 이름 순서대로 자동 표시 -->
 	  <div class="row justify-content-center  raon-gallery">
-		  <img src="assets/img/imageModal/thumbs/1.jpeg" 
-		       data-full="assets/img/imageModal/1.jpeg" 
-		       alt="특강" 
-		       class="raon-thumb" 
+		{% assign news_images = site.static_files | sort: "path" %}
+		{% for file in news_images %}
+		  {% assign ext = file.extname | downcase %}
+		  {% assign top_dir = file.path | slice: 0, 13 %}
+		  {% if top_dir == "/edit/notice/" %}
+		  {% if ext == ".jpg" or ext == ".jpeg" or ext == ".png" or ext == ".gif" or ext == ".webp" %}
+		  <img src="{{ file.path | remove_first: '/' | uri_escape }}?v={{ site.time | date: '%s' }}"
+		       data-full="{{ file.path | remove_first: '/' | uri_escape }}?v={{ site.time | date: '%s' }}"
+		       alt="공지"
+		       class="raon-thumb"
+		       loading="lazy"
 		       onclick="openModal(this)">
-		  <img src="assets/img/imageModal/thumbs/2.jpeg" 
-		       data-full="assets/img/imageModal/2.jpeg" 
-		       alt="특강" 
-		       class="raon-thumb" 
-		       onclick="openModal(this)">
-		  <img src="assets/img/imageModal/thumbs/3.jpeg" 
-		       data-full="assets/img/imageModal/3.jpeg" 
-		       alt="특강" 
-		       class="raon-thumb" 
-		       onclick="openModal(this)">
-		  <img src="assets/img/imageModal/thumbs/4.jpeg" 
-		       data-full="assets/img/imageModal/4.jpeg" 
-		       alt="특강" 
-		       class="raon-thumb" 
-		       onclick="openModal(this)">
-		  <img src="assets/img/imageModal/thumbs/5.jpeg" 
-		       data-full="assets/img/imageModal/5.jpeg" 
-		       alt="특강" 
-		       class="raon-thumb" 
-		       onclick="openModal(this)">
-		  <img src="assets/img/imageModal/thumbs/6.jpeg" 
-		       data-full="assets/img/imageModal/6.jpeg" 
-		       alt="특강" 
-		       class="raon-thumb" 
-		       onclick="openModal(this)">
-		  <img src="assets/img/imageModal/thumbs/7.jpeg" 
-		       data-full="assets/img/imageModal/7.jpeg" 
-		       alt="특강" 
-		       class="raon-thumb" 
-		       onclick="openModal(this)">
+		  {% endif %}
+		  {% endif %}
+		{% endfor %}
 	  </div>
 	</div>
 </section>
